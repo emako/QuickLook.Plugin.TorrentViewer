@@ -1,0 +1,69 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.WindowsDesktop">
+
+    <PropertyGroup>
+        <OutputType>Library</OutputType>
+        <TargetFramework>net462</TargetFramework>
+        <RootNamespace>QuickLook.Plugin.TorrentViewer</RootNamespace>
+        <AssemblyName>QuickLook.Plugin.TorrentViewer</AssemblyName>
+        <FileAlignment>512</FileAlignment>
+        <SignAssembly>false</SignAssembly>
+	    <UseWPF>true</UseWPF>
+	    <LangVersion>12.0</LangVersion>
+		<AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
+    </PropertyGroup>
+
+    <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|AnyCPU'">
+        <DebugSymbols>true</DebugSymbols>
+        <DebugType>full</DebugType>
+        <Optimize>false</Optimize>
+        <OutputPath>..\..\Build\Debug\QuickLook.Plugin\QuickLook.Plugin.TorrentViewer\</OutputPath>
+        <DefineConstants>DEBUG;TRACE</DefineConstants>
+        <ErrorReport>prompt</ErrorReport>
+    </PropertyGroup>
+
+    <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|AnyCPU'">
+        <DebugType>pdbonly</DebugType>
+        <Optimize>true</Optimize>
+        <!-- <OutputPath>..\..\Build\Release\QuickLook.Plugin\QuickLook.Plugin.TorrentViewer\</OutputPath> -->
+        <DefineConstants>TRACE</DefineConstants>
+        <ErrorReport>prompt</ErrorReport>
+    </PropertyGroup>
+
+    <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x86'">
+        <DebugSymbols>true</DebugSymbols>
+        <DebugType>full</DebugType>
+        <OutputPath>..\..\Build\Debug\QuickLook.Plugin\QuickLook.Plugin.TorrentViewer\</OutputPath>
+        <DefineConstants>DEBUG;TRACE</DefineConstants>
+        <PlatformTarget>x86</PlatformTarget>
+        <ErrorReport>prompt</ErrorReport>
+    </PropertyGroup>
+
+    <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x86'">
+        <!-- <OutputPath>..\..\Build\Release\QuickLook.Plugin\QuickLook.Plugin.TorrentViewer\</OutputPath> -->
+        <DefineConstants>TRACE</DefineConstants>
+        <Optimize>true</Optimize>
+        <DebugType>pdbonly</DebugType>
+        <PlatformTarget>x86</PlatformTarget>
+        <ErrorReport>prompt</ErrorReport>
+    </PropertyGroup>
+
+    <ItemGroup>
+        <None Remove="QuickLook.Plugin.Metadata.config" />
+    </ItemGroup>
+
+    <ItemGroup>
+		<PackageReference Include="System.Buffers" Version="4.5.1" />
+		<PackageReference Include="System.IO.Pipelines" Version="8.0.0" />
+    </ItemGroup>
+
+    <ItemGroup>
+        <ProjectReference Include="..\..\QuickLook.Common\QuickLook.Common.csproj" />
+    </ItemGroup>
+
+	<ItemGroup>
+		<Content Include="QuickLook.Plugin.Metadata.config">
+			<CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+		</Content>
+	</ItemGroup>
+
+</Project>
