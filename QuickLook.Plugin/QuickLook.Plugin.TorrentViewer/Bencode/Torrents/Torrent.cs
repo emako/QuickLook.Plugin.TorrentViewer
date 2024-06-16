@@ -365,6 +365,7 @@ public class Torrent : BObject
     /// The info hash is a 20-byte SHA1 hash of the value of the 'info' <see cref="BDictionary"/> of the torrent.
     /// </summary>
     /// <returns>A 20-byte SHA1 hash of the value of the 'info' part</returns>
+    [Obsolete]
     public virtual byte[] GetInfoHashBytes() => TorrentUtil.CalculateInfoHashBytes(this);
 
     /// <summary>

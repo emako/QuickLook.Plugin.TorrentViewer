@@ -15,6 +15,11 @@
             <local:SizePrettyPrintConverter x:Key="SizePrettyPrintConverter" />
             <local:FileExtToIconConverter x:Key="FileExtToIconConverter" />
             <local:AddConverter x:Key="AddConverter" />
+            <Style x:Key="ControlButtonStyle"
+                   BasedOn="{StaticResource CaptionButtonStyle}"
+                   TargetType="Button">
+                <Setter Property="Width" Value="32" />
+            </Style>
         </ResourceDictionary>
     </UserControl.Resources>
     <Grid x:Name="treeGrid"
@@ -39,11 +44,11 @@
                     Width="NaN"
                     Height="NaN"
                     Padding="8"
-                    Content="&#xE8C8;"
+                    Content="&#xE71B;"
                     FontSize="16"
                     FontWeight="Bold"
                     Foreground="{Binding Foreground, RelativeSource={RelativeSource AncestorType=local:ArchiveFileListView}}"
-                    Style="{StaticResource CaptionButtonStyle}" />
+                    Style="{StaticResource ControlButtonStyle}" />
         </Grid>
         <Border Grid.Row="1"
                 Margin="0,8,0,0"

@@ -56,11 +56,13 @@ internal static class TorrentParser
             pieceIndex++;
         }
 
-        return new Metainfo(torrent.DisplayName,
-                            new Sha1Hash(torrent.GetInfoHashBytes()),
-                            files,
-                            pieces,
-                            torrent.Trackers.Select(x => x.Select(y => new Uri(y))),
-                            []);
+        var metaInfo = new Metainfo(torrent.DisplayName,
+                                    new Sha1Hash(torrent.OriginalInfoHashBytes),
+                                    files,
+                                    pieces,
+                                    torrent.Trackers.Select(x => x.Select(y => new Uri(y))),
+                                    []);
+
+        return metaInfo;
     }
 }

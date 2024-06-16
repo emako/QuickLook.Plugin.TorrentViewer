@@ -38,8 +38,7 @@ public class Metainfo
         Name = name;
         _pieces = new ReadOnlyCollection<Piece>(pieces.ToList());
         InfoHash = infoHash;
-        Files = new List<ContainedFile>();
-        Files.AddRange(files);
+        Files = [.. files];
         TotalSize = Files.Any() ? Files.Sum(f => f.Size) : 0;
         Trackers = trackers.Select(x => (IReadOnlyList<Uri>)new ReadOnlyCollection<Uri>(x.ToList())).ToList().AsReadOnly();
         PieceSize = _pieces.First().Size;

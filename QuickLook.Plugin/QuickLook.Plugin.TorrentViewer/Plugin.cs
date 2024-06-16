@@ -20,9 +20,6 @@ using QuickLook.Plugin.TorrentViewer.Data;
 using System;
 using System.IO;
 using System.Linq;
-using System.Text;
-using System.Text.RegularExpressions;
-using System.Threading.Tasks;
 using System.Windows;
 
 namespace QuickLook.Plugin.TorrentViewer;
@@ -63,7 +60,6 @@ public class Plugin : IViewer
             Name = metainfo.Name,
             InfoHash = metainfo.InfoHash.Value.Select(v => $"{v:x2}").Join(),
             Files = metainfo.Files
-            //.Where(f => !Regex.IsMatch(f.Name, @"_____padding_file_\d+_.*____"))
             .Select(f => new TorrentFile()
             {
                 Name = f.Name,

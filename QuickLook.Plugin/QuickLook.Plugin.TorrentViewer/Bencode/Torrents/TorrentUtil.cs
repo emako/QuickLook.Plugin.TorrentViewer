@@ -36,6 +36,7 @@ public static class TorrentUtil
     /// </summary>
     /// <param name="torrent">The torrent to calculate the info hash for.</param>
     /// <returns>A byte-array of the 20-byte SHA1 hash.</returns>
+    [Obsolete]
     public static byte[] CalculateInfoHashBytes(Torrent torrent)
     {
         var info = torrent.ToBDictionary().Get<BDictionary>("info");
