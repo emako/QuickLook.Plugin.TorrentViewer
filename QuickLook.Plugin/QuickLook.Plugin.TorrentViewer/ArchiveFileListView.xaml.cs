@@ -16,6 +16,7 @@
 // along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 using System;
+using System.Windows;
 using System.Windows.Controls;
 
 namespace QuickLook.Plugin.TorrentViewer;
@@ -40,6 +41,17 @@ public partial class ArchiveFileListView : UserControl, IDisposable
     public void SetDataContext(TorrentFiles context)
     {
         treeTitle.Text = context.Name;
+        copyButton.Click += (_, _) =>
+        {
+            try
+            {
+                Clipboard.SetText(context.Magnet);
+            }
+            catch
+            {
+                ///
+            }
+        };
 
         treeGrid.DataContext = context.Files;
 

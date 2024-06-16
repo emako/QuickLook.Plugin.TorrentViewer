@@ -21,6 +21,7 @@ using System;
 using System.IO;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows;
 
@@ -60,12 +61,18 @@ public class Plugin : IViewer
         TorrentFiles torrent = new()
         {
             Name = metainfo.Name,
-            Files = metainfo.Files.Select(f => new TorrentFile()
+            InfoHash = metainfo.InfoHash.Value.Select(v => $"{v:x2}").Join(),
+            Files = metainfo.Files
+            .Where(f => !Regex.IsMatch(f.Name, @"_____padding_file_\d+_.*____"))
+            .Select(f => new TorrentFile()
             {
                 Name = f.Name,
                 Size = f.Size,
             }),
+            Trackers = metainfo.Trackers.SelectMany(t => t).Select(u => u.ToString()),
         };
+
+        torrent.Magnet = Torrent2Magnet.GenerateMagnetLink(torrent.InfoHash, torrent.Name, torrent.Trackers.ToArray());
 
         _tvp.SetDataContext(torrent);
         _tvp.Tag = context;

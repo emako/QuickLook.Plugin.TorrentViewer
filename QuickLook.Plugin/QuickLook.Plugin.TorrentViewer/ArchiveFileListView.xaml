@@ -8,9 +8,14 @@
              d:DesignWidth="300"
              mc:Ignorable="d">
     <UserControl.Resources>
-        <local:SizePrettyPrintConverter x:Key="SizePrettyPrintConverter" />
-        <local:FileExtToIconConverter x:Key="FileExtToIconConverter" />
-        <local:AddConverter x:Key="AddConverter" />
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="/QuickLook.Common;component/Styles/MainWindowStyles.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+            <local:SizePrettyPrintConverter x:Key="SizePrettyPrintConverter" />
+            <local:FileExtToIconConverter x:Key="FileExtToIconConverter" />
+            <local:AddConverter x:Key="AddConverter" />
+        </ResourceDictionary>
     </UserControl.Resources>
     <Grid x:Name="treeGrid"
           Margin="8"
@@ -19,11 +24,27 @@
             <RowDefinition Height="Auto" />
             <RowDefinition Height="*" />
         </Grid.RowDefinitions>
-        <TextBlock x:Name="treeTitle"
-                   Grid.Row="0"
-                   FontSize="21"
-                   FontWeight="Bold"
-                   TextWrapping="Wrap" />
+        <Grid Grid.Row="0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto" />
+                <ColumnDefinition Width="Auto" />
+            </Grid.ColumnDefinitions>
+            <TextBlock x:Name="treeTitle"
+                       Grid.Column="0"
+                       FontSize="21"
+                       FontWeight="Bold"
+                       TextWrapping="Wrap" />
+            <Button x:Name="copyButton"
+                    Grid.Column="1"
+                    Width="NaN"
+                    Height="NaN"
+                    Padding="8"
+                    Content="&#xE8C8;"
+                    FontSize="16"
+                    FontWeight="Bold"
+                    Foreground="{Binding Foreground, RelativeSource={RelativeSource AncestorType=local:ArchiveFileListView}}"
+                    Style="{StaticResource CaptionButtonStyle}" />
+        </Grid>
         <Border Grid.Row="1"
                 Margin="0,8,0,0"
                 BorderBrush="#33AAAAAA"
