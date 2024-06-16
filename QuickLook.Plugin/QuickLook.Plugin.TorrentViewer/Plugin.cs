@@ -63,7 +63,7 @@ public class Plugin : IViewer
             Name = metainfo.Name,
             InfoHash = metainfo.InfoHash.Value.Select(v => $"{v:x2}").Join(),
             Files = metainfo.Files
-            .Where(f => !Regex.IsMatch(f.Name, @"_____padding_file_\d+_.*____"))
+            //.Where(f => !Regex.IsMatch(f.Name, @"_____padding_file_\d+_.*____"))
             .Select(f => new TorrentFile()
             {
                 Name = f.Name,
