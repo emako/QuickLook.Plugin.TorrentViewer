@@ -32,7 +32,7 @@
         </Grid.RowDefinitions>
         <Grid Grid.Row="0">
             <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="Auto" />
+                <ColumnDefinition Width="*" />
                 <ColumnDefinition Width="Auto" />
             </Grid.ColumnDefinitions>
             <TextBlock x:Name="treeTitle"
@@ -42,8 +42,6 @@
                        TextWrapping="Wrap" />
             <Button x:Name="copyButton"
                     Grid.Column="1"
-                    Width="NaN"
-                    Height="NaN"
                     Padding="8"
                     Content="&#xE71B;"
                     FontSize="16"
@@ -75,6 +73,14 @@
                                 <ColumnDefinition Width="*" />
                                 <ColumnDefinition Width="Auto" />
                             </Grid.ColumnDefinitions>
+                            <Grid.ToolTip>
+                                <TextBlock>
+                                    <TextBlock.Inlines>
+                                        <Run Text="{Binding Name}" />
+                                        <Run Text="(" /><Run Text="{Binding Size, Converter={StaticResource SizePrettyPrintConverter}}" /><Run Text=")" />
+                                    </TextBlock.Inlines>
+                                </TextBlock>
+                            </Grid.ToolTip>
                             <Image Grid.Column="0" Source="{Binding Name, Converter={StaticResource FileExtToIconConverter}}" />
                             <TextBlock Grid.Column="1"
                                        Margin="8,0,0,0"

@@ -45,9 +45,11 @@ public partial class ArchiveFileListView : UserControl, IDisposable
     public void SetDataContext(TorrentFiles context)
     {
         treeTitle.Text = context.Name;
+        treeTitle.ToolTip = context.Name;
         totalCount.Text = string.Format(TranslationHelper.Get("TOTAL_COUNT", domain: Assembly.GetExecutingAssembly().GetName().Name), context.Files.Count().ToString());
         totalSize.Text = string.Format(TranslationHelper.Get("TOTAL_SIZE", domain: Assembly.GetExecutingAssembly().GetName().Name), context.Files.Sum(x => x.Size).ToPrettySize(2));
 
+        copyButton.ToolTip = context.Magnet;
         copyButton.Click += (_, _) =>
         {
             try
