@@ -77,8 +77,12 @@
                             <Image Grid.Column="0" Source="{Binding Name, Converter={StaticResource FileExtToIconConverter}}" />
                             <TextBlock Grid.Column="1"
                                        Margin="8,0,0,0"
-                                       Text="{Binding Name}" />
-                            <TextBlock Grid.Column="2" Text="{Binding Size, Converter={StaticResource SizePrettyPrintConverter}}" />
+                                       VerticalAlignment="Center"
+                                       Text="{Binding Name}"
+                                       TextTrimming="CharacterEllipsis" />
+                            <TextBlock Grid.Column="2"
+                                       VerticalAlignment="Center"
+                                       Text="{Binding Size, Converter={StaticResource SizePrettyPrintConverter}}" />
                         </Grid>
                     </DataTemplate>
                 </TreeView.ItemTemplate>
