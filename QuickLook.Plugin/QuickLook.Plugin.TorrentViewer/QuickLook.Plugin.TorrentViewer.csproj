@@ -9,6 +9,7 @@
         <SignAssembly>false</SignAssembly>
 	    <UseWPF>true</UseWPF>
 	    <LangVersion>12.0</LangVersion>
+		<Nullable>enable</Nullable>
 		<AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
     </PropertyGroup>
 
@@ -64,6 +65,12 @@
 		<Content Include="QuickLook.Plugin.Metadata.config">
 			<CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
 		</Content>
+	</ItemGroup>
+
+	<ItemGroup>
+	  <None Update="Translations.config">
+	    <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+	  </None>
 	</ItemGroup>
 
 </Project>

@@ -28,6 +28,7 @@
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto" />
             <RowDefinition Height="*" />
+            <RowDefinition Height="Auto" />
         </Grid.RowDefinitions>
         <Grid Grid.Row="0">
             <Grid.ColumnDefinitions>
@@ -88,5 +89,17 @@
                 </TreeView.ItemTemplate>
             </TreeView>
         </Border>
+        <Grid Grid.Row="2" Margin="0,8,0,0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+            <TextBlock x:Name="totalCount"
+                       Grid.Column="0"
+                       Margin="30,0,0,0" />
+            <TextBlock x:Name="totalSize"
+                       Grid.Column="1"
+                       Margin="30,0,0,0" />
+        </Grid>
     </Grid>
 </UserControl>

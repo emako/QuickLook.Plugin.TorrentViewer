@@ -15,7 +15,11 @@
 // You should have received a copy of the GNU General Public License
 // along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
+using QuickLook.Common.ExtensionMethods;
+using QuickLook.Common.Helpers;
 using System;
+using System.Linq;
+using System.Reflection;
 using System.Windows;
 using System.Windows.Controls;
 
@@ -41,6 +45,9 @@ public partial class ArchiveFileListView : UserControl, IDisposable
     public void SetDataContext(TorrentFiles context)
     {
         treeTitle.Text = context.Name;
+        totalCount.Text = string.Format(TranslationHelper.Get("TOTAL_COUNT", domain: Assembly.GetExecutingAssembly().GetName().Name), context.Files.Count().ToString());
+        totalSize.Text = string.Format(TranslationHelper.Get("TOTAL_SIZE", domain: Assembly.GetExecutingAssembly().GetName().Name), context.Files.Sum(x => x.Size).ToPrettySize(2));
+
         copyButton.Click += (_, _) =>
         {
             try
