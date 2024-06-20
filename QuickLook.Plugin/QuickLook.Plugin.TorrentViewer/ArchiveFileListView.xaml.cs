@@ -18,10 +18,14 @@
 using QuickLook.Common.ExtensionMethods;
 using QuickLook.Common.Helpers;
 using System;
+using System.Collections.Generic;
+using System.Globalization;
+using System.IO;
 using System.Linq;
 using System.Reflection;
 using System.Windows;
 using System.Windows.Controls;
+using System.Xml.XPath;
 
 namespace QuickLook.Plugin.TorrentViewer;
 
@@ -44,10 +48,12 @@ public partial class ArchiveFileListView : UserControl, IDisposable
 
     public void SetDataContext(TorrentFiles context)
     {
+        string translationFile = Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), "Translations.config");
+
         treeTitle.Text = context.Name;
         treeTitle.ToolTip = context.Name;
-        totalCount.Text = string.Format(TranslationHelper.Get("TOTAL_COUNT", domain: Assembly.GetExecutingAssembly().GetName().Name), context.Files.Count().ToString());
-        totalSize.Text = string.Format(TranslationHelper.Get("TOTAL_SIZE", domain: Assembly.GetExecutingAssembly().GetName().Name), context.Files.Sum(x => x.Size).ToPrettySize(2));
+        totalCount.Text = string.Format(Common.Helpers.TranslationHelper.Get("TOTAL_COUNT", translationFile), context.Files.Count().ToString());
+        totalSize.Text = string.Format(Common.Helpers.TranslationHelper.Get("TOTAL_SIZE", translationFile), context.Files.Sum(x => x.Size).ToPrettySize(2));
 
         copyButton.ToolTip = context.Magnet;
         copyButton.Click += (_, _) =>

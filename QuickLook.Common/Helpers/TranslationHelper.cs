@@ -19,6 +19,7 @@ using System.Collections.Generic;
 using System.Globalization;
 using System.IO;
 using System.Reflection;
+using System.Windows;
 using System.Xml.XPath;
 
 namespace QuickLook.Common.Helpers;
@@ -28,7 +29,7 @@ public class TranslationHelper
     private static readonly CultureInfo CurrentCultureInfo = CultureInfo.CurrentUICulture;
     //private static readonly CultureInfo CurrentCultureInfo = CultureInfo.GetCultureInfo("zh-CN");
 
-    private static readonly Dictionary<string, XPathNavigator> FileCache = new Dictionary<string, XPathNavigator>();
+    private static readonly Dictionary<string, XPathNavigator> FileCache = [];
 
     public static string Get(string id, string file = null, CultureInfo locale = null, string failsafe = null,
         string domain = "QuickLook")
