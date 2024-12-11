@@ -7,17 +7,21 @@
         <AssemblyName>QuickLook.Plugin.TorrentViewer</AssemblyName>
         <FileAlignment>512</FileAlignment>
         <SignAssembly>false</SignAssembly>
-	    <UseWPF>true</UseWPF>
-	    <LangVersion>12.0</LangVersion>
-		<Nullable>enable</Nullable>
-		<AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
+        <UseWPF>true</UseWPF>
+        <LangVersion>latest</LangVersion>
+        <Nullable>enable</Nullable>
+        <AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
+        <GenerateTargetFrameworkAttribute>false</GenerateTargetFrameworkAttribute>
+		<ProjectGuid>{A5B1DCF7-5C77-430A-A72F-326A3CE50FF4}</ProjectGuid>
+        <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+        <NoWarn>$(NoWarn);CS8600;CS8601;CS8602;CS8603;CS8604;CS8618;CS8625</NoWarn>
     </PropertyGroup>
 
     <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|AnyCPU'">
         <DebugSymbols>true</DebugSymbols>
         <DebugType>full</DebugType>
         <Optimize>false</Optimize>
-        <OutputPath>..\..\Build\Debug\QuickLook.Plugin\QuickLook.Plugin.TorrentViewer\</OutputPath>
+        <OutputPath>..\..\QuickLook\Build\Debug\QuickLook.Plugin\QuickLook.Plugin.TorrentViewer\</OutputPath>
         <DefineConstants>DEBUG;TRACE</DefineConstants>
         <ErrorReport>prompt</ErrorReport>
     </PropertyGroup>
@@ -25,7 +29,7 @@
     <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|AnyCPU'">
         <DebugType>pdbonly</DebugType>
         <Optimize>true</Optimize>
-        <!-- <OutputPath>..\..\Build\Release\QuickLook.Plugin\QuickLook.Plugin.TorrentViewer\</OutputPath> -->
+        <OutputPath>..\Build\Release\</OutputPath>
         <DefineConstants>TRACE</DefineConstants>
         <ErrorReport>prompt</ErrorReport>
     </PropertyGroup>
@@ -33,14 +37,14 @@
     <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x86'">
         <DebugSymbols>true</DebugSymbols>
         <DebugType>full</DebugType>
-        <OutputPath>..\..\Build\Debug\QuickLook.Plugin\QuickLook.Plugin.TorrentViewer\</OutputPath>
+        <OutputPath>..\..\QuickLook\Build\Debug\QuickLook.Plugin\QuickLook.Plugin.TorrentViewer\</OutputPath>
         <DefineConstants>DEBUG;TRACE</DefineConstants>
         <PlatformTarget>x86</PlatformTarget>
         <ErrorReport>prompt</ErrorReport>
     </PropertyGroup>
 
     <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x86'">
-        <!-- <OutputPath>..\..\Build\Release\QuickLook.Plugin\QuickLook.Plugin.TorrentViewer\</OutputPath> -->
+        <OutputPath>..\Build\Release\</OutputPath> 
         <DefineConstants>TRACE</DefineConstants>
         <Optimize>true</Optimize>
         <DebugType>pdbonly</DebugType>
@@ -49,28 +53,29 @@
     </PropertyGroup>
 
     <ItemGroup>
-        <None Remove="QuickLook.Plugin.Metadata.config" />
+        <PackageReference Include="System.Buffers" Version="4.5.1" />
+        <PackageReference Include="System.IO.Pipelines" Version="8.0.0" />
     </ItemGroup>
 
     <ItemGroup>
-		<PackageReference Include="System.Buffers" Version="4.5.1" />
-		<PackageReference Include="System.IO.Pipelines" Version="8.0.0" />
+        <ProjectReference Include="..\QuickLook.Common\QuickLook.Common.csproj">
+            <Project>{85FDD6BA-871D-46C8-BD64-F6BB0CB5EA95}</Project>
+            <Name>QuickLook.Common</Name>
+            <Private>False</Private>
+        </ProjectReference>
     </ItemGroup>
 
     <ItemGroup>
-        <ProjectReference Include="..\..\QuickLook.Common\QuickLook.Common.csproj" />
+        <None Include="..\QuickLook.Plugin.Metadata.Base.config" />
+        <None Include="..\QuickLook.Plugin.Metadata.config">
+            <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+        </None>
     </ItemGroup>
 
-	<ItemGroup>
-		<Content Include="QuickLook.Plugin.Metadata.config">
-			<CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-		</Content>
-	</ItemGroup>
-
-	<ItemGroup>
-	  <None Update="Translations.config">
-	    <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-	  </None>
-	</ItemGroup>
+    <ItemGroup>
+        <None Update="Translations.config">
+            <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+        </None>
+    </ItemGroup>
 
 </Project>
