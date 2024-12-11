@@ -81,7 +81,11 @@
                                     </TextBlock.Inlines>
                                 </TextBlock>
                             </Grid.ToolTip>
-                            <Image Grid.Column="0" Source="{Binding Name, Converter={StaticResource FileExtToIconConverter}}" />
+                            <Image Grid.Column="0"
+                                   Width="16"
+                                   Height="16"
+                                   RenderOptions.BitmapScalingMode="HighQuality"
+                                   Source="{Binding Name, Converter={StaticResource FileExtToIconConverter}}" />
                             <TextBlock Grid.Column="1"
                                        Margin="8,0,0,0"
                                        VerticalAlignment="Center"

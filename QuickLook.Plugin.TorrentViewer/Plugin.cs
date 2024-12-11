@@ -18,6 +18,7 @@
 using QuickLook.Common.Plugin;
 using QuickLook.Plugin.TorrentViewer.Data;
 using System;
+using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Windows;
@@ -99,8 +100,10 @@ public class Plugin : IViewer
             Metainfo metainfo = TorrentParser.ReadFromStream(stream);
             return metainfo;
         }
-        catch
+        catch (Exception e)
         {
+            Debug.WriteLine("Failed to load torrent file.");
+            Debug.WriteLine(e);
         }
 
         return null!;
